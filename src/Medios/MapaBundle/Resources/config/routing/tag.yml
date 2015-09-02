@@ -1,0 +1,30 @@
+tag:
+    path:     /
+    defaults: { _controller: "MediosMapaBundle:Tag:index" }
+
+tag_show:
+    path:     /{id}/show
+    defaults: { _controller: "MediosMapaBundle:Tag:show" }
+
+tag_new:
+    path:     /new
+    defaults: { _controller: "MediosMapaBundle:Tag:new" }
+
+tag_create:
+    path:     /create
+    defaults: { _controller: "MediosMapaBundle:Tag:create" }
+    methods:  POST
+
+tag_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MediosMapaBundle:Tag:edit" }
+
+tag_update:
+    path:     /{id}/update
+    defaults: { _controller: "MediosMapaBundle:Tag:update" }
+    methods:  [POST, PUT]
+
+tag_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MediosMapaBundle:Tag:delete" }
+    methods:  [POST, DELETE]

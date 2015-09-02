@@ -1,0 +1,28 @@
+<?
+namespace Medios\MapaBundle\Menu;
+
+use Knp\Menu\FactoryInterface;
+use Symfony\Component\DependencyInjection\ContainerAware;
+
+class Builder extends ContainerAware
+{
+    public function mainMenu(FactoryInterface $factory, array $options)
+    {
+        $menu = $factory->createItem('root');
+
+        $menu->addChild('Home', array('route' => 'medios_mapa_homepage'));
+        $menu->addChild('D3', array('route' => 'medios_mapa_d3'));
+        $menu->addChild('D3 v2', array('route' => 'medios_mapa_d32'));
+        $menu->addChild('D3 v2', array('route' => 'medios_mapa_d33'));
+        $menu->addChild('Sigma', array('route' => 'medios_mapa_sigma'));
+        $menu->addChild('Articulos', array('route' => 'articulo'));
+        $menu->addChild('Tags', array('route' => 'tag'));
+
+        $menu['Articulos']->addChild('Todos', array('route' => 'articulo'));
+        $menu['Articulos']->addChild('Nuevo', array('route' => 'articulo_new'));
+        $menu['Tags']->addChild('Todos', array('route' => 'tag'));
+        $menu['Tags']->addChild('Nuevo', array('route' => 'tag_new'));
+
+        return $menu;
+    }
+}

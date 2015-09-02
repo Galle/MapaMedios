@@ -1,0 +1,2 @@
+{% extends 'MopaBootstrapBundle::base_less.html.twig' %}
+

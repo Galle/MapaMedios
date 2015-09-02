@@ -1,0 +1,36 @@
+{% extends 'MediosMapaBundle::layout.html.twig' %}
+
+{% block body -%}
+    <h1>Articulo</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Titulo</th>
+                <td>{{ entity.titulo }}</td>
+            </tr>
+            <tr>
+                <th>Bajada</th>
+                <td>{{ entity.bajada }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('articulo') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('articulo_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'MopaBootstrapBundle::base_less.html.twig' %}
+{% if form is defined %}
+{% form_theme form 'MopaBootstrapBundle:Form:fields.html.twig' %}
+{% endif %}
+{% block navbar %}
+{% embed '@MopaBootstrap/Navbar/navbar.html.twig' with {inverse: true, id: 'navbar-example' } %}
+    {% block brand %}
+        <a class="navbar-brand" href="{{ path('homepage') }}">Medios</a>
+    {% endblock %}
+
+    {% block menu %}
+        {{ mopa_bootstrap_menu('MediosMapaBundle:Builder:mainMenu',{'automenu': 'navbar'}) }}
+    {% endblock %}
+{% endembed %}
+{% endblock navbar %}
+{% block head_script %}
+    {% javascripts
+        '@MediosMapaBundle/Resources/public/js/jquery-2.1.4.min.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock head_script %}

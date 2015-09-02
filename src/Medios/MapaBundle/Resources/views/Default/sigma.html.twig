@@ -1,0 +1,34 @@
+{% extends 'MediosMapaBundle::layout.html.twig' %}
+
+{% block content %}
+    <div id="mapa" style="height:800px; width:980px;"></div>
+{% endblock %}
+
+{% block foot_script %}
+{{ parent() }}
+{% javascripts
+    '@MediosMapaBundle/Resources/public/js/sigma.min.js'
+    '@MediosMapaBundle/Resources/public/js/plugins/sigma.layout.forceAtlas2.min.js'
+    '@MediosMapaBundle/Resources/public/js/plugins/sigma.parsers.json.min.js'
+%}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+<script>
+
+s = new sigma({
+  container: 'mapa',
+  settings: {
+    //drawEdges: false
+    edgeWeightInfluence: 1
+  }
+});
+sigma.parsers.json("{{ path('medios_mapa_sigma_json') }}", s);
+
+    // Start the ForceAtlas2 algorithm:
+    s.startForceAtlas2({worker: true, barnesHutOptimize: false});
+
+</script>
+    
+    
+{% endblock %}

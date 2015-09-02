@@ -1,0 +1,30 @@
+articulo:
+    path:     /
+    defaults: { _controller: "MediosMapaBundle:Articulo:index" }
+
+articulo_show:
+    path:     /{id}/show
+    defaults: { _controller: "MediosMapaBundle:Articulo:show" }
+
+articulo_new:
+    path:     /new
+    defaults: { _controller: "MediosMapaBundle:Articulo:new" }
+
+articulo_create:
+    path:     /create
+    defaults: { _controller: "MediosMapaBundle:Articulo:create" }
+    methods:  POST
+
+articulo_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MediosMapaBundle:Articulo:edit" }
+
+articulo_update:
+    path:     /{id}/update
+    defaults: { _controller: "MediosMapaBundle:Articulo:update" }
+    methods:  [POST, PUT]
+
+articulo_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MediosMapaBundle:Articulo:delete" }
+    methods:  [POST, DELETE]

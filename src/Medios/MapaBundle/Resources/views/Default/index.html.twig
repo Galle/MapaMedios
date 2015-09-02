@@ -1,0 +1,11 @@
+{% extends 'MediosMapaBundle::layout.html.twig' %}
+{% block head_script %}
+    {{ parent() }}
+    {% javascripts
+        '@MediosMapaBundle/Resources/public/js/sigma.min.js'
+        '@MediosMapaBundle/Resources/public/js/plugins/sigma.layout.forceAtlas2.min.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    
+{% endblock %}

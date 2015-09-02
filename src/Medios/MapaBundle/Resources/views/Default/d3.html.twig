@@ -1,0 +1,128 @@
+{% extends 'MediosMapaBundle::layout.html.twig' %}
+
+{% block head_style %}
+    {{ parent() }}
+    <style>
+
+    .node {
+      stroke: #fff;
+      stroke-width: 1.5px;
+    }
+
+    .link {
+      stroke: #999;
+      stroke-opacity: .6;
+    }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div id="mapa" style="width:930px;height:500px;"></div>
+{% endblock %}
+
+{% block foot_script %}
+    {{ parent() }}
+    {% javascripts
+        '@MediosMapaBundle/Resources/public/js/d3.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+    
+<script>
+var width = 960,
+    height = 500;
+
+var color = d3.scale.category20();
+
+var force = d3.layout.force()
+    .size([width, height]);
+
+var svg = d3.select("#mapa").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+//d3.json("{{ asset('bundles/mediosmapa/miserables.json') }}", function(error, graph) {
+d3.json("{{ path('medios_mapa_d3_json') }}", function(error, graph) {
+  if (error) throw error;
+
+  force
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .start()
+    //.linkStrength(0)
+    .friction(0.9)
+   // .linkDistance(120)
+  //  .charge(-30)
+    .gravity(0.01)
+    .theta(0.8)
+    .alpha(0.1);
+    //.start();
+    
+   force.linkDistance(function(link) {
+        if (link.classname == 'ancla_tag')
+        {
+            return 0;
+        }
+        else if (link.classname == 'tag_articulo')
+        {
+            return 0;
+        }
+        else
+        {
+            return 30;
+        }
+    });
+    force.linkStrength(function(link) {
+        if (link.classname == 'ancla_tag')
+        {
+            return 1;
+        }
+        else if (link.classname == 'tag_articulo')
+        {
+            return 0.2;
+        }
+        else
+        {
+            return 1;
+        }
+    });
+   
+   
+   force.charge(function(node) {
+        if (node.className === 'ancla')  return 150
+        else if (node.className === 'tag')  return 0
+        return -100;
+    });
+    force.start()
+
+  var link = svg.selectAll(".link")
+      .data(graph.links)
+    .enter().append("line")
+      .attr("class", "link")
+      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+
+  var node = svg.selectAll(".node")
+      .data(graph.nodes)
+    .enter().append("circle")
+      .attr("class", "node")
+      .attr("r", 5)
+      .style("fill", function(d) { if (d.classname!='tag'){return color(d.group);}else {return null;} })
+      .call(force.drag);
+
+  node.append("title")
+      .text(function(d) { return d.name; });
+
+  force.on("tick", function() {
+    link.attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node.attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+  });
+});
+
+</script>
+{% endblock %}

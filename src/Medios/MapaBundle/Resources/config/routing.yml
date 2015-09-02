@@ -1,0 +1,44 @@
+medios_mapa_articulo:
+    resource: "@MediosMapaBundle/Resources/config/routing/articulo.yml"
+    prefix:   /articulo
+
+medios_mapa_tag:
+    resource: "@MediosMapaBundle/Resources/config/routing/tag.yml"
+    prefix:   /tag
+
+medios_mapa_homepage:
+    path:     /
+    defaults: { _controller: MediosMapaBundle:Default:index }
+    
+medios_mapa_d3:
+    path:     /d3
+    defaults: { _controller: MediosMapaBundle:Default:d3 }
+    
+medios_mapa_d3_json:
+    path:     /d3/json
+    defaults: { _controller: MediosMapaBundle:Default:d3json }
+    
+medios_mapa_sigma:
+    path:     /sigma
+    defaults: { _controller: MediosMapaBundle:Default:sigma }
+    
+medios_mapa_sigma_json:
+    path:     /sigma/json
+    defaults: { _controller: MediosMapaBundle:Default:sigmajson }
+
+medios_mapa_sigma_json2:
+    path:     /sigma/json2
+    defaults: { _controller: MediosMapaBundle:Default:sigmajson2 }
+    
+medios_mapa_d32:
+    path:     /d32
+    defaults: { _controller: MediosMapaBundle:Default:d32 }
+    
+medios_mapa_d33:
+    path:     /d33
+    defaults: { _controller: MediosMapaBundle:Default:d33 }
+    
+medios_mapa_d3_json2:
+    path:     /d3/json2
+    defaults: { _controller: MediosMapaBundle:Default:d3json2 }
+
