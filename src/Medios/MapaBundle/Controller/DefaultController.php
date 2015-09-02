@@ -161,7 +161,7 @@ class DefaultController extends Controller
                 {
                     foreach($tag_id[$tag->getId()] as $semitag)
                     {
-                        $fuerzas_temp[] = $semitag['index'];
+                        $fuerzas_temp[] = array('nodo' => $semitag['index'], 'grupo' => $semitag['grupo']);
                         if(array_key_exists($semitag['grupo'],$grupo_count))
                         {
                             $grupo_count[$semitag['grupo']]+=1;
@@ -193,7 +193,7 @@ class DefaultController extends Controller
                                 'titulo' => $articulo->getTitulo(), 
                                 'bajada' => $articulo->getBajada(),
                                 'grupo_tag' => $grupo_tag,
-                                'grupo_weight' => $grupo_diff,
+                                'grupo_weight' => 1.1+$grupo_diff/count($articulo->getTags()),
                                 'fecha' => $articulo->getFecha()->format('h:i d/m/Y'));
             $tag_index++;
             

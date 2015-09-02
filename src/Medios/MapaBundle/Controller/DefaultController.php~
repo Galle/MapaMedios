@@ -161,7 +161,7 @@ class DefaultController extends Controller
                 {
                     foreach($tag_id[$tag->getId()] as $semitag)
                     {
-                        $fuerzas_temp[] = $semitag['index'];
+                        $fuerzas_temp[] = array('nodo' => $semitag['index'], 'grupo' => $semitag['grupo']);
                         if(array_key_exists($semitag['grupo'],$grupo_count))
                         {
                             $grupo_count[$semitag['grupo']]+=1;

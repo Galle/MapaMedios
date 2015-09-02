@@ -468,14 +468,23 @@ d3.json("{{ path('medios_mapa_d3_json2') }}", function(error, graph) {
             .attr("y", function(d) { return d.y; });
 
         var k = e.alpha * 0.1;
+        var w = 1;
         nodes = force.nodes();
         nodes.forEach(function(node) {
             if (node.classname=="articulo")
             {
             node.fuerzas.forEach(function(fuerza)
                 {
-                    node.x += (nodes[fuerza].x - node.x) * k;
-                    node.y += (nodes[fuerza].y - node.y) * k;
+                    if (node.grupo_tag == fuerza.grupo)
+                    {
+                        w = node.grupo_weight;
+                    }
+                    else
+                    {
+                        w = 1;
+                    }
+                    node.x += (nodes[fuerza.nodo].x - node.x) * k * w;
+                    node.y += (nodes[fuerza.nodo].y - node.y) * k * w;
                 });
             }
             });
@@ -508,14 +517,23 @@ d3.json("{{ path('medios_mapa_d3_json2') }}", function(error, graph) {
             .attr("y", function(d) { return d.y; });
 
         var k = e.alpha * 0.1;
+        var w = 1;
         nodes = force.nodes();
         nodes.forEach(function(node) {
             if (node.classname=="articulo")
             {
             node.fuerzas.forEach(function(fuerza)
                 {
-                    node.x += (nodes[fuerza].x - node.x) * k;
-                    node.y += (nodes[fuerza].y - node.y) * k;
+                    if (node.grupo_tag == fuerza.grupo)
+                    {
+                        w = node.grupo_weight;
+                    }
+                    else
+                    {
+                        w = 1;
+                    }
+                    node.x += (nodes[fuerza.nodo].x - node.x) * k * w;
+                    node.y += (nodes[fuerza.nodo].y - node.y) * k * w;
                 });
             }
             });
