@@ -397,7 +397,7 @@ d3.json("{{ path('medios_mapa_d3_json2') }}", function(error, graph) {
           .attr("width", 254)
           .attr("height", 122)
           .style("fill", "#000");
-  /*node_a
+  node_a
           .append("image")
           .attr("rx", 5)
           .attr("ry", 5)
@@ -405,7 +405,7 @@ d3.json("{{ path('medios_mapa_d3_json2') }}", function(error, graph) {
           .attr("y", -61)
           .attr("width", 254)
           .attr("height", 122)
-          .attr("xlink:href","resources/images/check.png");*/
+          .attr("xlink:href",function(d){return d.img_path});
   //Titulo  
   node_a
           .append("text")
@@ -594,7 +594,7 @@ function collide(alpha) {
               alx = Math.abs(lx),
               aly = Math.abs(ly);
 
-                // choose the direction with less overlap
+              // choose the direction with less overlap
               if (alx > aly  &&  aly > 0) lx = 0;
               else if (aly > alx  &&  alx > 0) ly = 0;
               

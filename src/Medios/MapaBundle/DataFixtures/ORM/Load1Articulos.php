@@ -26,31 +26,37 @@ class LoadArticulo extends AbstractFixture implements OrderedFixtureInterface,  
 		    $articulo1 = new Articulo();
 		    $articulo1->setTitulo("Titulo");
 		    $articulo1->setBajada("Bajada");
+		    $articulo1->setMedio("Radio UC");
 		    $manager->persist($articulo1);
 		    
 		    $articulo2 = new Articulo();
 		    $articulo2->setTitulo("Titulo");
 		    $articulo2->setBajada("Bajada");
+		    $articulo2->setMedio("Medios UC");
 		    $manager->persist($articulo2);
 		    
 		    $articulo3 = new Articulo();
 		    $articulo3->setTitulo("Titulo");
 		    $articulo3->setBajada("Bajada");
+		    $articulo3->setMedio("Señal UC");
 		    $manager->persist($articulo3);
 		    
 		    $articulo4 = new Articulo();
 		    $articulo4->setTitulo("Titulo");
 		    $articulo4->setBajada("Bajada");
+		    $articulo4->setMedio("Radio UC");
 		    $manager->persist($articulo4);
 		    
 		    $articulo5 = new Articulo();
 		    $articulo5->setTitulo("Titulo");
 		    $articulo5->setBajada("Bajada");
+		    $articulo5->setMedio("Medios UC");
 		    $manager->persist($articulo5);
 		    
 		    $articulo6 = new Articulo();
 		    $articulo6->setTitulo("Titulo");
 		    $articulo6->setBajada("Bajada");
+		    $articulo6->setMedio("KM Cero");
 		    $manager->persist($articulo6);
 		    
 		    $articulo1->addTag($manager->merge($this->getReference('tag1')));

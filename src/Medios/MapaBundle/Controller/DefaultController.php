@@ -192,6 +192,7 @@ class DefaultController extends Controller
                                 'fuerzas' => $fuerzas_temp,
                                 'titulo' => $articulo->getTitulo(), 
                                 'bajada' => $articulo->getBajada(),
+                                'img_path' => $articulo->getWebPath(),
                                 'grupo_tag' => $grupo_tag,
                                 'grupo_weight' => 1.1+$grupo_diff/count($articulo->getTags()),
                                 'fecha' => $articulo->getFecha()->format('h:i d/m/Y'));

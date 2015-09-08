@@ -475,9 +475,9 @@ d3.json("{{ path('medios_mapa_d3_json2') }}", function(error, graph) {
             {
             node.fuerzas.forEach(function(fuerza)
                 {
-                    if (nodes[fuerza.nodo].grupo_tag == fuerza.grupo)
+                    if (node.grupo_tag == fuerza.grupo)
                     {
-                        w = nodes[fuerza.nodo].grupo_weight;
+                        w = node.grupo_weight;
                     }
                     else
                     {
@@ -594,7 +594,7 @@ function collide(alpha) {
               alx = Math.abs(lx),
               aly = Math.abs(ly);
 
-                // choose the direction with less overlap
+              // choose the direction with less overlap
               if (alx > aly  &&  aly > 0) lx = 0;
               else if (aly > alx  &&  alx > 0) ly = 0;
               
